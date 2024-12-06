@@ -1,0 +1,59 @@
+METHOD 1 - Using StringBuilder (42.69 memory)
+class Solution {
+    public int repeatedStringMatch(String a, String b) {
+        StringBuilder temp = new StringBuilder(); // Use StringBuilder for efficient concatenation
+        temp.append(a); // Initialize temp with string 'a'
+        int c = 1; // Counter to keep track of repetitions
+        
+        // Extend temp while its length is less than b's length
+        while (temp.length() < b.length()) {
+            temp.append(a); // Append 'a' to temp
+            c++; // Increment the counter
+        }
+
+        // Check if b is a substring of temp
+        if (temp.toString().contains(b)) {
+            return c; // Return the number of repetitions
+        }
+
+        // Append one more 'a' to temp and check again
+        temp.append(a);
+        if (temp.toString().contains(b)) {
+            return c + 1; // Return the updated repetition count
+        }
+        
+        // Return -1 if b is not found as a substring
+        return -1;
+    }
+}
+
+METHOD 2 - Using Strings (46.5 memory) 
+/*
+class Solution {
+    public int repeatedStringMatch(String a, String b) {
+        String temp = "";
+        temp += a; // Initialize temp with string 'a'
+        int c = 1; // Counter to keep track of repetitions
+        
+        // Extend temp while its length is less than b's length
+        while (temp.length() < b.length()) { 
+            temp += a; // Concatenate 'a' to temp
+            c++; // Increment the counter
+        }
+
+        // Check if b is a substring of temp
+        if (temp.contains(b)) { 
+            return c; // Return the number of repetitions
+        }
+
+        // Append one more 'a' to temp and check again
+        temp = temp + a;
+        if (temp.contains(b)) { 
+            return c + 1; // Return the updated repetition count
+        }
+        
+        // Return -1 if b is not found as a substring
+        return -1;
+    }
+}
+*/
