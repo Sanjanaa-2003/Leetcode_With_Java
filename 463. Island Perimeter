@@ -1,0 +1,88 @@
+//Fix the black square as reference and check left and top for every i>0 and j>0
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int sum=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j]==1){
+                    sum+=4;
+                    if(i>0 && grid[i-1][j]==1){
+                        sum-=2;
+                    }
+                    if(j>0 && grid[i][j-1]==1){
+                        sum-=2;
+                    }
+                }
+                
+            }
+        }
+        return sum;
+    }
+}
+
+//From topmost first cell, check for right and bottom
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int sum=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j]==1){
+                    sum+=4;
+                    if(i<grid.length-1 && grid[i+1][j]==1){
+                        sum-=2;
+                    }
+                    if(j<grid[0].length-1 && grid[i][j+1]==1){
+                        sum-=2;
+                    }
+                }
+                
+            }
+        }
+        return sum;
+    }
+}
+
+//from bottommost left cell, check top and right
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int sum = 0;
+        for (int i = grid.length - 1; i >= 0; i--) { // Bottom-up traversal
+            for (int j = 0; j < grid[0].length; j++) { // Process all columns
+                if (grid[i][j] == 1) {
+                    sum += 4; // Add 4 for each land cell
+                    // Subtract 2 for each adjacent land cell
+                    if (i < grid.length - 1 && grid[i + 1][j] == 1) { 
+                        sum -= 2; // Check bottom neighbor
+                    }
+                    if (j > 0 && grid[i][j - 1] == 1) {
+                        sum -= 2; // Check left neighbor
+                    }
+                }
+            }
+        }
+        return sum;
+    }
+}
+
+//from bottommost right cell, check left and top
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int sum = 0;
+        for (int i = grid.length - 1; i >= 0; i--) { // Bottom-up traversal
+            for (int j = grid[0].length-1; j >= 0; j--) { // Process all columns
+                if (grid[i][j] == 1) {
+                    sum += 4; // Add 4 for each land cell
+                    // Subtract 2 for each adjacent land cell
+                    if (i>0  && grid[i - 1][j] == 1) { 
+                        sum -= 2; // Check bottom neighbor
+                    }
+                    if (j > 0 && grid[i][j - 1] == 1) {
+                        sum -= 2; // Check left neighbor
+                    }
+                }
+            }
+        }
+        return sum;
+    }
+}
+
