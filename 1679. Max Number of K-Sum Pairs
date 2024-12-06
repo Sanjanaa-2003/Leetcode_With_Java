@@ -1,0 +1,23 @@
+class Solution {
+    public int maxOperations(int[] nums, int k) {       //let k=6
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int it:nums){
+            map.put(it,map.getOrDefault(it,0)+1);
+        }
+        int c=0;
+        for(int i:map.keySet()){
+            if(map.containsKey(i) && map.containsKey(k-i)){    //i=2   k-i=4
+                if(i != k-i){
+                    c+=Math.min(map.get(i),map.get(k-i));    //to get the max possible pairs of 2 and 4
+                    map.put(i,0);
+                    map.put(k-i,0);
+                }else{
+                    c+=Math.floor(map.get(i)/2);            // 3+3=6 3/2=1.5 floor=1
+                    map.put(i,0);                          //if there are 4 no of 3's then 4/2=2 pairs; if there are 3, 3/2=1 pair
+                }
+            }
+            
+        }
+        return c;
+    }
+}
