@@ -48,6 +48,8 @@ class Solution {
 Time Complexity - O(n)
 Space Complexity - O(n)
 
+Worst Case SC is n if unique elements.
+
 ------------------------------------------------------------------------------------------------------------------------------
 
 3. BEST APPROACH 
